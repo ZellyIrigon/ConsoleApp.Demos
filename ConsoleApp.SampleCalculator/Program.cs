@@ -1,41 +1,67 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
 using System.Security.AccessControl;
 
 Console.WriteLine("***** - Welcome to the sample calculator - *****!");
 
-//Prompt for user input
-Console.Write("Please enter the first number: ");
-int firstNum = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Please enter the second number: ");
- int secondNum = Convert.ToInt32(Console.ReadLine());
-
 //Show calculator options / Show menu
-Console.WriteLine("Please select an operation");
+Console.WriteLine("Please select an operation (-1 to exit)");
 Console.WriteLine("1 - Addition");
 Console.WriteLine("2 - Subtraction");
 Console.WriteLine("3 - Multiplication");
 Console.WriteLine("4 - Division");
-
+Console.WriteLine("5 - Fibonacci Sequence");
 int choice = Convert.ToInt32(Console.ReadLine());
 
-
-//Decide which operation is needed based on selected option
-switch (choice)
+while (choice != -1)
 {
-    case 1:
-        Console.WriteLine("You chose ADDITION, the result is:" + firstNum + secondNum);
-        break;
-    case 2:
-        Console.WriteLine("You chose SUBTRACTION, the result is:"+ (firstNum - secondNum));
-        break;
-    case 3:
-        Console.WriteLine("You chose MULTIPLICATION, the result is:" + (firstNum * secondNum));
-        break;
-    case 4:
-        Console.WriteLine("You chose DIVISION, the result is:" + (firstNum / secondNum));
-        break;
-    default:
-        Console.WriteLine("Invalid choice entered! Exit");
-        break;
+    //Prompt for user input
+    Console.Write("Please enter the first number: ");
+    int firstNum = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Please enter the second number: ");
+    int secondNum = Convert.ToInt32(Console.ReadLine());
+
+    //Decide which operation is needed based on selected option
+    int answer = 0;
+    switch (choice)
+    {
+        case 1:
+            answer = firstNum + secondNum;
+            break;
+        case 2:
+            answer = firstNum - secondNum;
+            break;
+        case 3:
+            answer = firstNum * secondNum;
+            break;
+        case 4:
+            answer = firstNum / secondNum;
+            break;
+        case 5:
+            for (int i = firstNum; i <= secondNum; i++)
+            {
+                answer += i;
+            }
+            break;
+        default:
+            Console.WriteLine("Invalid choice entered! Exit");
+            break;
+    }
+    //print output
+    Console.WriteLine($"The result is {answer}");
+    Console.WriteLine("Press enter to continue.");
+    Console.ReadLine();
+    Console.Clear();
+
+
+    Console.WriteLine("Please select an operation (-1 to exit)");
+    Console.WriteLine("1 - Addition");
+    Console.WriteLine("2 - Subtraction");
+    Console.WriteLine("3 - Multiplication");
+    Console.WriteLine("4 - Division");
+    Console.WriteLine("5 - Fibonacci Sequence");
+    choice = Convert.ToInt32(Console.ReadLine());
+
 }
+Console.WriteLine("******** - Thank you for using the sample calculator! - ********");
